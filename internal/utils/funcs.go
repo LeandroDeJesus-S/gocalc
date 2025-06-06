@@ -1,5 +1,6 @@
 package utils
 
+// IsOperator takes a rune and returns a boolean indicating whether the rune is an operator.
 func IsOperator(char rune) bool {
 	switch char {
 	case '+', '-', '*', '/', '^':
@@ -9,6 +10,10 @@ func IsOperator(char rune) bool {
 	}
 }
 
+// GetAssociativity returns the associativity of an operator.
+// For operators '+', '-', '*', and '/', it returns "left".
+// For operator '^', it returns "right".
+// If the operator is not recognized, it returns an empty string.
 func GetAssociativity(op rune) string {
 	switch op {
 	case '+', '-', '*', '/':
@@ -20,6 +25,11 @@ func GetAssociativity(op rune) string {
 	}
 }
 
+// GetPrecedence returns the precedence of an operator.
+// For operators '+', '-', it returns 1.
+// For operators '*', '/', it returns 2.
+// For operator '^', it returns 3.
+// If the operator is not recognized, it returns 0.
 func GetPrecedence(op rune) int {
 	switch op {
 	case '+', '-':
@@ -33,6 +43,8 @@ func GetPrecedence(op rune) int {
 	}
 }
 
+// GetOperatorRes pops two numbers from the result stack and applies the
+// given operator function to them, returning the result.
 func GetOperatorRes(resStack *Stack[float64], funcOp func(float64, float64) float64) float64 {
 	right := resStack.Pop()
 	left := resStack.Pop()

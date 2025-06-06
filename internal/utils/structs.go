@@ -2,6 +2,7 @@ package utils
 
 import "fmt"
 
+// Token represents a token in an expression with its value, type, precedence, and associativity.
 type Token struct {
 	Value         string
 	Type          string
@@ -14,6 +15,7 @@ func (t Token) String() string {
 		t.Value, t.Type, t.Precedence, t.Associativity)
 }
 
+// Queue is a generic queue implementation.
 type Queue[T any] struct {
 	Values []T
 }
@@ -35,14 +37,18 @@ func (q Queue[T]) Len() int {
 	return len(q.Values)
 }
 
+// Stack is a generic stack implementation.
 type Stack[T any] struct {
 	Values []T
 }
 
+// Push adds an item to the top of the stack.
 func (s *Stack[T]) Push(item T) {
 	s.Values = append(s.Values, item)
 }
 
+// Pop removes the top item from the stack and returns it. If the stack is empty
+// Pop returns the zero value for the type T.
 func (s *Stack[T]) Pop() T {
 	if len(s.Values) == 0 {
 		return *new(T)
@@ -52,10 +58,13 @@ func (s *Stack[T]) Pop() T {
 	return item
 }
 
+// Len returns the number of items in the stack.
 func (s Stack[T]) Len() int {
 	return len(s.Values)
 }
 
+// Top returns the item at the top of the stack without removing it. If the stack
+// is empty Top returns the zero value for the type T.
 func (s Stack[T]) Top() T {
 	if len(s.Values) == 0 {
 		return *new(T)

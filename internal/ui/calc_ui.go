@@ -15,7 +15,7 @@ import (
 
 func Home() {
 	a := app.New()
-	w := a.NewWindow("Home")
+	w := a.NewWindow("GoCalc")
 	w.Resize(fyne.NewSize(280, w.Canvas().Size().Height))
 
 	display := widget.NewEntry()
